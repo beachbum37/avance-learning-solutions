@@ -133,7 +133,7 @@ em, .italic{ font-style:italic; font-family:'Fraunces',serif; font-weight:400; }
 }
 .site-header.is-scrolled{
   padding:16px 0;
-  background:rgba(247,245,241,0.86);
+  background:rgba(246,242,234,0.86);
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
   border-bottom:1px solid var(--paper-line);
@@ -144,9 +144,9 @@ em, .italic{ font-style:italic; font-family:'Fraunces',serif; font-weight:400; }
 /* Header logo: single <img>, src swapped by JS based on header state (js/main.js).
    avance-logo.png = dark/black ink -> use on light backgrounds (scrolled header).
    avance-logo-light.png = light/white ink -> use on dark backgrounds (unscrolled header, over the hero). */
-.logo-img{ width:165px; height:auto; object-fit:contain; display:block; }
-@media(max-width:960px){ .logo-img{ width:140px; } }
-@media(max-width:480px){ .logo-img{ width:120px; } }
+.logo-img{ width:173px; height:auto; object-fit:contain; display:block; }
+@media(max-width:960px){ .logo-img{ width:147px; } }
+@media(max-width:480px){ .logo-img{ width:126px; } }
 
 .main-nav{ display:flex; align-items:center; gap:28px; }
 .main-nav a{ font-size:13.5px; font-weight:500; color:var(--on-navy); letter-spacing:0.01em; position:relative; padding:4px 0; white-space:nowrap; transition:color .3s var(--ease); }
@@ -164,7 +164,7 @@ em, .italic{ font-style:italic; font-family:'Fraunces',serif; font-weight:400; }
 .header-actions .btn{ padding:12px 22px; }
 .header-actions .btn-ghost{ border-color:var(--navy-line); color:var(--on-navy); }
 .header-actions .btn-ghost:hover{ border-color:var(--on-navy); }
-.site-header.is-scrolled .header-actions .btn-ghost{ border-color:var(--paper-line); color:var(--ink); }
+.site-header.is-scrolled .header-actions .btn-ghost{ border-color:rgba(23,23,23,0.35); color:var(--ink); }
 .site-header.is-scrolled .header-actions .btn-ghost:hover{ border-color:var(--ink); }
 
 .nav-toggle{ display:none; flex-direction:column; gap:5px; background:none; border:none; padding:8px; position:relative; z-index:1100; }
