@@ -139,23 +139,37 @@ em, .italic{ font-style:italic; font-family:'Fraunces',serif; font-weight:400; }
   border-bottom:1px solid var(--paper-line);
 }
 .header-row{ display:flex; align-items:center; justify-content:space-between; gap:24px; }
-.logo{ display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-size:20px; font-weight:600; letter-spacing:-0.01em; }
-.logo-mark{ width:9px; height:9px; background:var(--gold); border-radius:1px; transform:rotate(45deg); flex:none; }
-.logo-sub{ font-family:'Inter',sans-serif; font-weight:500; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-faint); margin-left:2px; }
+.logo{ display:flex; align-items:center; }
+
+/* Header logo: single <img>, src swapped by JS based on header state (js/main.js).
+   avance-logo.png = dark/black ink -> use on light backgrounds (scrolled header).
+   avance-logo-light.png = light/white ink -> use on dark backgrounds (unscrolled header, over the hero). */
+.logo-img{ width:165px; height:auto; object-fit:contain; display:block; }
+@media(max-width:960px){ .logo-img{ width:140px; } }
+@media(max-width:480px){ .logo-img{ width:120px; } }
 
 .main-nav{ display:flex; align-items:center; gap:28px; }
-.main-nav a{ font-size:13.5px; font-weight:500; color:var(--ink-soft); letter-spacing:0.01em; position:relative; padding:4px 0; white-space:nowrap; }
-.main-nav a:hover, .main-nav a.active{ color:var(--ink); }
+.main-nav a{ font-size:13.5px; font-weight:500; color:var(--on-navy); letter-spacing:0.01em; position:relative; padding:4px 0; white-space:nowrap; transition:color .3s var(--ease); }
+.main-nav a:hover, .main-nav a.active{ color:var(--gold-bright); }
 .main-nav a::after{
-  content:''; position:absolute; left:0; right:0; bottom:0; height:1px; background:var(--gold);
+  content:''; position:absolute; left:0; right:0; bottom:0; height:1px; background:var(--gold-bright);
   transform:scaleX(0); transform-origin:right; transition:transform .3s var(--ease);
 }
 .main-nav a:hover::after, .main-nav a.active::after{ transform:scaleX(1); transform-origin:left; }
+.site-header.is-scrolled .main-nav a{ color:#171717; }
+.site-header.is-scrolled .main-nav a:hover, .site-header.is-scrolled .main-nav a.active{ color:var(--gold); }
+.site-header.is-scrolled .main-nav a::after{ background:var(--gold); }
+
 .header-actions{ display:flex; align-items:center; gap:22px; }
 .header-actions .btn{ padding:12px 22px; }
+.header-actions .btn-ghost{ border-color:var(--navy-line); color:var(--on-navy); }
+.header-actions .btn-ghost:hover{ border-color:var(--on-navy); }
+.site-header.is-scrolled .header-actions .btn-ghost{ border-color:var(--paper-line); color:var(--ink); }
+.site-header.is-scrolled .header-actions .btn-ghost:hover{ border-color:var(--ink); }
 
 .nav-toggle{ display:none; flex-direction:column; gap:5px; background:none; border:none; padding:8px; position:relative; z-index:1100; }
-.nav-toggle span{ width:22px; height:1.5px; background:var(--ink); transition:all .3s var(--ease); }
+.nav-toggle span{ width:22px; height:1.5px; background:var(--on-navy); transition:all .3s var(--ease); }
+.site-header.on-light-bg .nav-toggle span{ background:#171717; }
 .nav-toggle.is-active span:nth-child(1){ transform:translateY(6.5px) rotate(45deg); }
 .nav-toggle.is-active span:nth-child(2){ opacity:0; }
 .nav-toggle.is-active span:nth-child(3){ transform:translateY(-6.5px) rotate(-45deg); }
@@ -286,6 +300,9 @@ em, .italic{ font-style:italic; font-family:'Fraunces',serif; font-weight:400; }
   background-size:36px 36px;
 }
 .fr-visual .fr-tag{ position:relative; font-family:'Fraunces',serif; font-style:italic; color:var(--on-navy); font-size:1.6rem; text-align:center; padding:0 20px; }
+.fr-visual.fr-photo{ background:var(--navy); }
+.fr-visual.fr-photo::before{ display:none; }
+.fr-visual.fr-photo img{ width:100%; height:100%; object-fit:cover; object-position:center top; }
 
 /* ---------- Industries ---------- */
 .industry-grid{ display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--paper-line); border-left:1px solid var(--paper-line); }

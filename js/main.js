@@ -1,25 +1,43 @@
 document.addEventListener('DOMContentLoaded', function () {
   var header = document.querySelector('.site-header');
-  var onScroll = function () {
-    if (window.scrollY > 20) header.classList.add('is-scrolled');
-    else header.classList.remove('is-scrolled');
-  };
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
-
-  var toggle = document.querySelector('.nav-toggle');
+  var headerLogo = header ? header.querySelector('.logo-img') : null;
   var mobileNav = document.querySelector('.mobile-nav');
+  var toggle = document.querySelector('.nav-toggle');
+
+  // avance-logo.png is the dark/black-ink mark -> use on light backgrounds.
+  // avance-logo-light.png is the light/white-ink mark -> use on dark backgrounds.
+  var LOGO_FOR_DARK_BG = 'assets/avance-logo-light.png';
+  var LOGO_FOR_LIGHT_BG = 'assets/avance-logo.png';
+
+  // The header sits on a light background whenever it's scrolled (blurred
+  // paper backdrop) OR the mobile nav is open (full-screen paper overlay,
+  // regardless of scroll position) -> logo/toggle icon must follow both.
+  var updateHeaderState = function () {
+    var isScrolled = window.scrollY > 20;
+    var isMenuOpen = mobileNav ? mobileNav.classList.contains('is-open') : false;
+    var onLightBg = isScrolled || isMenuOpen;
+    header.classList.toggle('is-scrolled', isScrolled);
+    header.classList.toggle('on-light-bg', onLightBg);
+    if (headerLogo) {
+      headerLogo.src = onLightBg ? LOGO_FOR_LIGHT_BG : LOGO_FOR_DARK_BG;
+    }
+  };
+  updateHeaderState();
+  window.addEventListener('scroll', updateHeaderState, { passive: true });
+
   if (toggle && mobileNav) {
     toggle.addEventListener('click', function () {
       var isOpen = mobileNav.classList.toggle('is-open');
       toggle.classList.toggle('is-active', isOpen);
       document.body.style.overflow = isOpen ? 'hidden' : '';
+      updateHeaderState();
     });
     mobileNav.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
         mobileNav.classList.remove('is-open');
         toggle.classList.remove('is-active');
         document.body.style.overflow = '';
+        updateHeaderState();
       });
     });
   }
