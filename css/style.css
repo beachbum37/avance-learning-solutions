@@ -5,21 +5,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root{
-  --paper:#F7F5F1;
-  --paper-alt:#EFEBE3;
-  --paper-line: rgba(20,21,26,0.10);
-  --ink:#14151A;
-  --ink-soft:#55565E;
-  --ink-faint:#8A8B92;
+  /* Brand palette: Black, Warm Ivory, Midnight Blue, Gold, White.
+     No cool grays -- every neutral below is warmed toward ivory/black
+     rather than tinted blue-gray. --navy/--navy-alt are the intentional
+     Midnight Blue anchors and are not "gray" in this system. */
+  --paper:#F6F2EA;
+  --paper-rgb: 246,242,234;
+  --paper-alt:#EEE8DC;
+  --ink:#15130F;
+  --ink-rgb: 21,19,15;
+  --paper-line: rgba(var(--ink-rgb),0.10);
+  --ink-soft:#55504A;
+  --ink-faint:#6E655A;
   --navy:#12141F;
   --navy-alt:#1A1D2C;
-  --navy-line: rgba(247,245,241,0.12);
+  --on-navy:#F3F1EB;
+  --on-navy-rgb: 243,241,235;
+  --navy-line: rgba(var(--on-navy-rgb),0.14);
   --accent:#3A4EE0;
   --accent-soft:#E7E9FB;
   --gold:#B0813F;
   --gold-bright:#C9995A;
-  --on-navy:#F3F1EB;
-  --on-navy-soft: rgba(243,241,235,0.68);
+  --on-navy-soft:#C9C2B2;
   --radius:2px;
   --container: 1240px;
   --ease: cubic-bezier(.16,.8,.24,1);
@@ -133,7 +140,7 @@ em, .italic{ font-style:italic; font-family:'Fraunces',serif; font-weight:400; }
 }
 .site-header.is-scrolled{
   padding:16px 0;
-  background:rgba(246,242,234,0.86);
+  background:rgba(var(--paper-rgb),0.86);
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
   border-bottom:1px solid var(--paper-line);
@@ -156,7 +163,7 @@ em, .italic{ font-style:italic; font-family:'Fraunces',serif; font-weight:400; }
   transform:scaleX(0); transform-origin:right; transition:transform .3s var(--ease);
 }
 .main-nav a:hover::after, .main-nav a.active::after{ transform:scaleX(1); transform-origin:left; }
-.site-header.is-scrolled .main-nav a{ color:#171717; }
+.site-header.is-scrolled .main-nav a{ color:var(--ink); }
 .site-header.is-scrolled .main-nav a:hover, .site-header.is-scrolled .main-nav a.active{ color:var(--gold); }
 .site-header.is-scrolled .main-nav a::after{ background:var(--gold); }
 
@@ -164,12 +171,12 @@ em, .italic{ font-style:italic; font-family:'Fraunces',serif; font-weight:400; }
 .header-actions .btn{ padding:12px 22px; }
 .header-actions .btn-ghost{ border-color:var(--navy-line); color:var(--on-navy); }
 .header-actions .btn-ghost:hover{ border-color:var(--on-navy); }
-.site-header.is-scrolled .header-actions .btn-ghost{ border-color:rgba(23,23,23,0.35); color:var(--ink); }
+.site-header.is-scrolled .header-actions .btn-ghost{ border-color:rgba(var(--ink-rgb),0.35); color:var(--ink); }
 .site-header.is-scrolled .header-actions .btn-ghost:hover{ border-color:var(--ink); }
 
 .nav-toggle{ display:none; flex-direction:column; gap:5px; background:none; border:none; padding:8px; position:relative; z-index:1100; }
 .nav-toggle span{ width:22px; height:1.5px; background:var(--on-navy); transition:all .3s var(--ease); }
-.site-header.on-light-bg .nav-toggle span{ background:#171717; }
+.site-header.on-light-bg .nav-toggle span{ background:var(--ink); }
 .nav-toggle.is-active span:nth-child(1){ transform:translateY(6.5px) rotate(45deg); }
 .nav-toggle.is-active span:nth-child(2){ opacity:0; }
 .nav-toggle.is-active span:nth-child(3){ transform:translateY(-6.5px) rotate(-45deg); }
@@ -329,7 +336,7 @@ em, .italic{ font-style:italic; font-family:'Fraunces',serif; font-weight:400; }
 /* ---------- CTA band ---------- */
 .cta-band{ padding:100px 0; background:var(--ink); color:var(--paper); text-align:center; }
 .cta-band h2{ color:var(--paper); max-width:18ch; margin:0 auto; }
-.cta-band .type-lead{ color:rgba(247,245,241,0.7); max-width:52ch; margin:22px auto 0; }
+.cta-band .type-lead{ color:var(--on-navy-soft); max-width:52ch; margin:22px auto 0; }
 .cta-band .cta-row{ justify-content:center; margin-top:40px; }
 .cta-band .btn-primary{ background:var(--paper); color:var(--ink); }
 .cta-band .btn-primary:hover{ background:var(--gold-bright); color:var(--navy); }
