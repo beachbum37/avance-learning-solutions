@@ -231,6 +231,8 @@ em, .italic{ font-style:italic; font-family:'Fraunces',serif; font-weight:400; }
 .hero h1{ color:var(--on-navy); max-width:16ch; }
 .hero .type-lead{ color:var(--on-navy-soft); margin-top:28px; max-width:58ch; }
 .hero .cta-row{ margin-top:44px; }
+.hero .btn-ghost{ border-color:var(--navy-line); color:var(--on-navy); }
+.hero .btn-ghost:hover{ border-color:var(--gold-bright); color:var(--gold-bright); }
 
 .hero-stats{
   margin-top:100px;
